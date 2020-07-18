@@ -12,12 +12,12 @@ public static Connection connection;
 
     public static void main (String[] args) {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/twitchlogs?user=root&password=Luckysnickerscat1997$&useSSL=false&allowLoadLocalInfile=true&characterEncoding=UTF-8");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/{dbname}?user={username}&password={insertpassword}$&useSSL=false&allowLoadLocalInfile=true&characterEncoding=UTF-8");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        TwitchBot bot = new TwitchBot("b0tau","gcm5y0rvosmfzpcs4obv2sj8cax1mu",new ArrayList<>(),0, false);
+        TwitchBot bot = new TwitchBot("username","authtoken",new ArrayList<>(),0, false);
         bot.connect(true);
         new Thread(bot::joinAdditionalChannels).start();
     }
